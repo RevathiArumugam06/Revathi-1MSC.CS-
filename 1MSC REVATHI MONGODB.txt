@@ -1,0 +1,514 @@
+ABOUT THIS PROJECT:
+        MongoDB is a document database management system that allows developers to develop a backup project, application, and more. It can store both structured 
+and unstructured data without a fixed size in JSON-like documents.In this project I used cmd to check the all queries like insert(one & many),update(one & many),
+delete,sort by objet_id,name(asc & desc) and then use skip, limit to sort the data.
+              
+
+RUN MONGO SHELL:
+
+C:\Program Files\MongoDB\mongosh-2.3.0-win32-x64\bin>mongosh
+Current Mongosh Log ID: 66da29ea0e14581c812710bb
+
+
+INSERT ONE DATA:
+
+
+test> db.msc.insertOne({id:100,name:"reva"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66da2a1d0e14581c812710bc')
+}
+
+
+INSERT MANY DATA:
+
+
+test> db.msc.insertMany([{id:101,name:"jana",age:24},{id:101,name:"nandhu",age:26},{id:102,name:"puni",age:19},{id:103,name:"kokila",age:29},
+{id:104,name:"bala",age:20},{id:105,name:"ramya",age:45},{id:106,name:"krithu",age:46},{id:107,name:"jeya",age:35},{id:108,name:"maha",age:32},{id:109,name:"sonu",age:34}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66da2ae90e14581c812710bd'),
+    '1': ObjectId('66da2ae90e14581c812710be'),
+    '2': ObjectId('66da2ae90e14581c812710bf'),
+    '3': ObjectId('66da2ae90e14581c812710c0'),
+    '4': ObjectId('66da2ae90e14581c812710c1'),
+    '5': ObjectId('66da2ae90e14581c812710c2'),
+    '6': ObjectId('66da2ae90e14581c812710c3'),
+    '7': ObjectId('66da2ae90e14581c812710c4'),
+    '8': ObjectId('66da2ae90e14581c812710c5'),
+    '9': ObjectId('66da2ae90e14581c812710c6')
+  }
+}
+
+
+FIND ALL O/P:
+
+
+test> db.msc.find()
+[
+  { _id: ObjectId('66da2a1d0e14581c812710bc'), id: 100, name: 'reva' },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c1'),
+    id: 104,
+    name: 'bala',
+    age: 20
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+UPDATA ONE DATA:
+
+
+test> db.msc.updateOne({name:"bala"},{$set:{name:"mathan"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+
+UPDATE MANY DATA:
+
+
+test> db.msc.updateMany({name:"mathan"},{$set:{id:110,name:"mahe"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+test> db.msc.deleteOne({name:"mahe"})
+{ acknowledged: true, deletedCount: 1 }
+
+
+SORT DATA AS OBJECT ID:
+
+
+test> db.msc.find().sort()
+[
+  { _id: ObjectId('66da2a1d0e14581c812710bc'), id: 100, name: 'reva' },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+SORT DATA AS DESC:
+
+
+test> db.msc.find().sort({name:-1})
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  },
+  { _id: ObjectId('66da2a1d0e14581c812710bc'), id: 100, name: 'reva' },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  }
+]
+
+
+SORT DATA AS ASC:
+
+
+test> db.msc.find().sort({name:1})
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  { _id: ObjectId('66da2a1d0e14581c812710bc'), id: 100, name: 'reva' },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+
+SKIP 1ST 2 DATA:
+
+test> db.msc.find().skip(2)
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+DISPLAY FIRST 2 DATA:
+
+test> db.msc.find().sort({name:1}).limit(2)
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  }
+]
+
+
+SORT ABOVE 20 AGE:
+
+test> db.msc.find({age:{$gt:20}})
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c2'),
+    id: 105,
+    name: 'ramya',
+    age: 45
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c3'),
+    id: 106,
+    name: 'krithu',
+    age: 46
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+SORT BELOW 36 AGE:
+
+
+test> db.msc.find({age:{$lt:36}})
+[
+  {
+    _id: ObjectId('66da2ae90e14581c812710bd'),
+    id: 101,
+    name: 'jana',
+    age: 24
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710be'),
+    id: 101,
+    name: 'nandhu',
+    age: 26
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710bf'),
+    id: 102,
+    name: 'puni',
+    age: 19
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c0'),
+    id: 103,
+    name: 'kokila',
+    age: 29
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c4'),
+    id: 107,
+    name: 'jeya',
+    age: 35
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c5'),
+    id: 108,
+    name: 'maha',
+    age: 32
+  },
+  {
+    _id: ObjectId('66da2ae90e14581c812710c6'),
+    id: 109,
+    name: 'sonu',
+    age: 34
+  }
+]
+
+
+
